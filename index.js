@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'));
  * 404 - Not Found
  */
 app.get('/404', function(req, res) {
-  res.render('404');
+  res.render('404', {title: 'Atlantis'});
 });
 
 /**
@@ -40,7 +40,8 @@ app.get('/:location', function(req, res) {
     res.redirect('/404');
   } else {
     Pegel.get(mapping[req.param('location')], function(data) {
-      res.render('data', data);
+      console.log(data);
+      res.render('data', {title: data.name});
     });  
   }
 });

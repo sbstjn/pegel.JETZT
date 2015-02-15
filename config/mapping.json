@@ -1,12 +1,16 @@
 {
 	"hamburg": {
 		"key": "hamburg",
-		"name": "Hamburg, St. Pauli",
-		"messstelle": "5952050",
+		"name": "Hamburg",
+		"scale": {
+			"min": 100,
+			"max": 900
+		},
+		"location": "Hamburg, St. Pauli",
 		"coordinates": ["53°32'44\"", "9°58'12\""],
 		"sites": {
-			"gezeiten": "http://www.bsh.de/cgi-bin/gezeiten/was_tab.pl?ort=DE__508P&zone=Gesetzliche+Zeit+%B9&niveau=PN",
-			"pegel": "http://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=5952050"
+			"current": "http://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=5952050",
+			"upcoming": "http://mobile.bsh.de/mobile/mobile.tabelb.htm"
 		}
 	}
 }
