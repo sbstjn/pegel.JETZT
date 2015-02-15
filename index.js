@@ -2,7 +2,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var lessMiddleware = require('less-middleware');
-var Pegel = require('./lib/pegel.js');
+var Pegel = require('./lib/Pegel.js');
 
 /**
  * Load Configuration
