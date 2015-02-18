@@ -1,28 +1,31 @@
 extends layout
 
 block content
-	- if (data.next.type == 'hw')
-		h1 Der Pegel steigt in
-	- else
-		h1 Der Pegel sinkt in
-	h2= label
-	h3
-		span
-			span.lat= geo[0]
-			span.log= geo[1]
-	ul
+	#pegel
 		- if (data.next.type == 'hw')
-			li.hw= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes()
-			li.nw= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes()
-		- else 
-			li.nw= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes()
-			li.hw= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes()
-			
-	#scale
-		#max=data.scale.max
-		#current=data.value
-		#min=data.scale.min
-	
+			h1 Der Pegel steigt in
+		- else
+			h1 Der Pegel sinkt in
+		h2= label
+		h3
+			span
+				span.lat= geo[0]
+				span.log= geo[1]
+		ul#upcoming
+			- if (data.next.type == 'hw')
+				li.hw.fst= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes() + ' ~' + data.next.bounds.hw + 'cm'
+				li.nw.snd= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes() + ' ~' + data.next.bounds.nw + 'cm'
+			- else 
+				li.nw.fst= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes() + ' ~' + data.next.bounds.nw + 'cm'
+				li.hw.snd= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes() + ' ~' + data.next.bounds.hw + 'cm'
+				
+		#visual
+			#scale
+				#max=data.next.bounds.hw
+				#cur(class=(data.next.type == 'hw' ? 'top' : 'bottom') data-max=data.next.bounds.hw, data-min=data.next.bounds.nw, data-cur=data.value)
+					span=data.value
+				#min=data.next.bounds.nw
+		
 	footer
 		h3 
 			a(href="http://S11K.com") S11K.com

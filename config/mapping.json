@@ -11,7 +11,7 @@
 		"geo": ["53°32'44\"", "9°58'12\""],
 		"sites": {
 			"current": "http://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=5952050",
-			"upcoming": "http://mobile.bsh.de/mobile/mobile.tabelb.htm"
+			"upcoming": "http://www.bsh.de/cgi-bin/gezeiten/was_tab.pl?ort=DE__508P&zone=Gesetzliche+Zeit+%B9&niveau=PN"
 		}
 	}
 }

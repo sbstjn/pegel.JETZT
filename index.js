@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 /**
  * Index - Redirect to default
  */
-app.get('/', function(req, res) {
+app.get('/hamburg', function(req, res) {
   // res.redirect('/' + config.default);
   var location = mapping['hamburg'];
   Pegel.get(location, function(data) {

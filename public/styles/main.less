@@ -6,4 +6,131 @@ html, body, div, p, ul, li, h1, h2, h3, h4, h5 {
 html, body {
 	height: 100%;
 	width: 100%;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#content {
+	min-height: 100%;
+	width: 100%;
+	text-align: center;
+	
+	background-color: hsl(46, 100%, 95%);
+}
+
+#upcoming {
+	width: 400px;
+	margin: 0 auto;
+	list-style-type: none;
+}
+
+.fst {
+	float: left;
+}
+
+.snd {
+	float: right;
+}
+
+#pegel {
+	padding-top: 50px;
+}
+
+#visual {
+	margin: 20px auto;
+	height: 400px;
+	width: 400px;
+	position: relative;
+}
+
+#scale {
+	background-color: green;
+	width: 400px;
+	height: 400px;
+	border-radius: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	
+	#min {
+		position: absolute;
+		bottom: -10px;
+		background-color: gray;
+		line-height: 20px;
+		font-size: 14px;
+		left: 150px;
+		width: 100px;
+		
+		z-index: 100;
+	}
+	
+	#cur {
+		position: relative;
+		
+		&.top {
+			top: -10px;
+		}
+		
+		&.bottom {
+			bottom: -10px;
+		}
+
+		z-index: 1;
+		
+		span {
+			background-color: white;
+			line-height: 20px;
+			font-size: 14;
+			top: -10px;
+			display: inline-block;
+			width: 100%;
+			position: relative;
+		}
+	}
+	
+	#max {
+		position: absolute;
+		top: -10px;
+		background-color: gray;
+		line-height: 20px;
+		font-size: 14px;
+		left: 150px;
+		width: 100px;
+		z-index: 100;
+	}
+}
+
+
+footer {
+	margin-top: 120px;
+	padding-bottom: 120px;
+	
+	a {
+		color: black;
+		font-weight: 300;
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	
+	h3 {
+		font-size: 20px;
+		
+		a {
+			font-weight: 400;
+		}
+	}
+	
+	h4 {
+		font-size: 14px;
+		
+		a {
+			font-weight: 400;
+		}
+	}
+	
+	h5 {
+		margin-top: 20px;
+	}
 }
