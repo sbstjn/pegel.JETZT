@@ -61,41 +61,44 @@ html, body {
 		width: 100px;
 		
 		z-index: 100;
+		display: none;
 	}
 	
 	#cur {
 		position: relative;
 		
 		&.top {
-			top: -10px;
+			top: 0px;
 		}
 		
 		&.bottom {
-			bottom: -10px;
+			bottom: 0px;
 		}
 
 		z-index: 1;
 		
 		span {
-			background-color: white;
+			background-color: blue;
 			line-height: 20px;
 			font-size: 14;
-			top: -10px;
 			display: inline-block;
 			width: 100%;
 			position: relative;
+			height: 400px;
 		}
 	}
 	
 	#max {
 		position: absolute;
-		top: -10px;
 		background-color: gray;
 		line-height: 20px;
 		font-size: 14px;
+		top: -10px;
 		left: 150px;
 		width: 100px;
+		
 		z-index: 100;
+		display: none;
 	}
 }
 
