@@ -37,9 +37,9 @@ app.get('/', function(req, res) {
     };
     
     if (data.cached) {
-      log.notice("Show from cache: Hamburg, St. Pauli", {action: 'show', location: 'Hamburg, St.Pauli'});
+      log.notice("From Cache: Hamburg, St. Pauli", {source: 'cache', location: 'Hamburg, St.Pauli'});
     } else {
-      log.notice("Load from remote: Hamburg, St. Pauli", {action: 'show', location: 'Hamburg, St.Pauli'});
+      log.notice("From Remote: emote: Hamburg, St. Pauli", {source: 'remote', location: 'Hamburg, St.Pauli'});
     }
     res.render('data', response);
   });  
