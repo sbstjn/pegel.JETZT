@@ -2,12 +2,13 @@
 	"hamburg": {
 		"key": "hamburg",
 		"name": "Hamburg",
+		"label": "Hamburg, St. Pauli",
 		"scale": {
 			"min": 100,
 			"max": 900
 		},
-		"location": "Hamburg, St. Pauli",
-		"coordinates": ["53°32'44\"", "9°58'12\""],
+		
+		"geo": ["53°32'44\"", "9°58'12\""],
 		"sites": {
 			"current": "http://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=5952050",
 			"upcoming": "http://mobile.bsh.de/mobile/mobile.tabelb.htm"

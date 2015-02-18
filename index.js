@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var lessMiddleware = require('less-middleware');
 var Pegel = require('./lib/Pegel.js');
+var relic = require('newrelic');
 
 /**
  * Load Configuration
@@ -19,22 +20,39 @@ app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + '/public'));
 
 /**
- * 404 - Not Found
- */
-app.get('/404', function(req, res) {
-  res.render('404', {title: 'Atlantis'});
-});
-
-/**
  * Index - Redirect to default
  */
 app.get('/', function(req, res) {
-  res.redirect('/' + config.default);
+  // res.redirect('/' + config.default);
+  var location = mapping['hamburg'];
+  Pegel.get(location, function(data) {
+    var response = {
+      title: "Aktueller Pegelstand in Hamburg, St. Pauli",
+      name: location.name,
+      label: location.label,
+      geo: location.geo,
+      data: data
+    };
+    
+    console.log(response);
+    res.render('data', response);
+  });  
+});
+
+app.get('/impressum', function(req, res) {
+  res.render('impressum', {title: 'Impressum von pegel.JETZT'});
 });
 
 /**
+ * 404 - Not Found
+ *
+app.get('/404', function(req, res) {
+  res.render('404', {title: 'Atlantis'});
+}); */
+
+/**
  * Pegel
- */
+ *
 app.get('/:location', function(req, res) {
   if (!mapping[req.param('location')]) {
     res.redirect('/404');
@@ -44,7 +62,7 @@ app.get('/:location', function(req, res) {
       res.render('data', {title: data.name});
     });  
   }
-});
+}); */
 
 /**
  * Start Express.js

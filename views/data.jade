@@ -1,4 +1,33 @@
 extends layout
 
 block content
-	p Lorem Ipsum
+	- if (data.next.type == 'hw')
+		h1 Der Pegel steigt in
+	- else
+		h1 Der Pegel sinkt in
+	h2= label
+	h3
+		span
+			span.lat= geo[0]
+			span.log= geo[1]
+	ul
+		- if (data.next.type == 'hw')
+			li.hw= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes()
+			li.nw= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes()
+		- else 
+			li.nw= 'NW: ' + data.next.nw.getHours() + ':' + data.next.nw.getMinutes()
+			li.hw= 'HW: ' + data.next.hw.getHours() + ':' + data.next.hw.getMinutes()
+			
+	#scale
+		#max=data.scale.max
+		#current=data.value
+		#min=data.scale.min
+	
+	footer
+		h3 
+			a(href="http://S11K.com") S11K.com
+		h4
+			a(href="http://S11K.com") Die Schnapsfrabik
+		h5
+			a(href="/impressum") Impressum
+	

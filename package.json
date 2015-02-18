@@ -10,7 +10,8 @@
     "express": "~4.9.x",
     "jade": "^1.9.2",
     "less-middleware": "^1.0.4",
-    "crawler": "^0.4.1"
+    "crawler": "^0.4.1",
+    "newrelic": "^1.16.2"
   },
   "engines": {
     "node": "0.10.x"
