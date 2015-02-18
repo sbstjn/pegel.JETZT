@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
     if (data.cached) {
       log.notice("From Cache: Hamburg, St. Pauli", {source: 'cache', location: 'Hamburg, St.Pauli'});
     } else {
-      log.notice("From Remote: emote: Hamburg, St. Pauli", {source: 'remote', location: 'Hamburg, St.Pauli'});
+      log.notice("From Remote: Hamburg, St. Pauli", {source: 'remote', location: 'Hamburg, St.Pauli'});
     }
     res.render('data', response);
   });  
