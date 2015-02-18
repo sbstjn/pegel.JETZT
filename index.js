@@ -4,6 +4,7 @@ var app = express();
 var lessMiddleware = require('less-middleware');
 var Pegel = require('./lib/Pegel.js');
 var relic = require('newrelic');
+var logentries = require('le_node');
 
 /**
  * Load Configuration
@@ -11,6 +12,7 @@ var relic = require('newrelic');
 var config = JSON.parse(fs.readFileSync('./config/app.json'));
 var mapping = JSON.parse(fs.readFileSync('./config/mapping.json'));
 
+var log = logentries.logger({ token:'18bf7167-80db-44b3-868e-f2514f31552f' });
 /**
  * Configure Express.js
  */
@@ -34,7 +36,11 @@ app.get('/', function(req, res) {
       data: data
     };
     
-    console.log(response);
+    if (data.cached) {
+      log.notice("Show from cache: Hamburg, St. Pauli", {action: 'show', location: 'Hamburg, St.Pauli'});
+    } else {
+      log.notice("Load from remote: Hamburg, St. Pauli", {action: 'show', location: 'Hamburg, St.Pauli'});
+    }
     res.render('data', response);
   });  
 });
@@ -42,27 +48,6 @@ app.get('/', function(req, res) {
 app.get('/impressum', function(req, res) {
   res.render('impressum', {title: 'Impressum von pegel.JETZT'});
 });
-
-/**
- * 404 - Not Found
- *
-app.get('/404', function(req, res) {
-  res.render('404', {title: 'Atlantis'});
-}); */
-
-/**
- * Pegel
- *
-app.get('/:location', function(req, res) {
-  if (!mapping[req.param('location')]) {
-    res.redirect('/404');
-  } else {
-    Pegel.get(mapping[req.param('location')], function(data) {
-      console.log(data);
-      res.render('data', {title: data.name});
-    });  
-  }
-}); */
 
 /**
  * Start Express.js

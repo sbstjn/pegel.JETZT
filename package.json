@@ -11,7 +11,8 @@
     "jade": "^1.9.2",
     "less-middleware": "^1.0.4",
     "crawler": "^0.4.1",
-    "newrelic": "^1.16.2"
+    "newrelic": "^1.16.2",
+    "le_node": "^0.2.1"
   },
   "engines": {
     "node": "0.10.x"
