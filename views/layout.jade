@@ -10,7 +10,11 @@ html
 		
 		meta(property="og:title" content=title)
 		meta(property="og:site_name" content="pegel.JETZT")
-		meta(property="og:description" content="Wie ist der aktuelle Wasserstand der Elbe in Hamburg?")
+		- if (location)
+			meta(property="og:description" content="Aktueller Wasserpegel in Hamburg")
+			// meta(property="og:description" content="Aktuell steigt der Wasserpegel in Hamburg! Es ist Flut, den Höchststand hat der Pegel um 19:14 Uhr. Danach gibt es wieder Ebbe und der Tiefstand ist um 04:14 Uhr erreicht. ")
+		- else 
+			meta(property="og:description" content="Der aktuelle Wasserpegel wird präsentiert von S11K.com")
 		meta(property="og:url" content="http://pegel.JETZT")
 		meta(property="og:type" content="website")
 		meta(property="og:image" content="http://pegel.JETZT/image.png")

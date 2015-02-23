@@ -3,10 +3,11 @@ extends layout
 block content
 	#pegel
 		- if (data.next.type == 'hw')
-			h1 Das Wasser steigt in
+			h1 Das Wasser steigt in 
+				span= label
 		- else
-			h1 Das Wasser sinkt in
-		h2= label
+			h1 Das Wasser sinkt in 
+				span= label
 		h3
 			span
 				span.bg
@@ -15,23 +16,19 @@ block content
 				span.bg
 		ul#upcoming
 			- if (data.next.type == 'hw')
-				li.hw.fst
-					span.icon
-					span.time= (data.next.hw.getHours() < 10 ? '0' : '') + data.next.hw.getHours() + ':' + (data.next.hw.getMinutes() < 10 ? '0' : '') + data.next.hw.getMinutes()
-					|  Uhr
-				li.nw.snd
-					span.icon
-					span.time= (data.next.nw.getHours() < 10 ? '0' : '') + data.next.nw.getHours() + ':' + (data.next.nw.getMinutes() < 10 ? '0' : '') + data.next.nw.getMinutes()
-					|  Uhr
-			- else 
-				li.nw.fst
-					span.icon
-					span.time= (data.next.nw.getHours() < 10 ? '0' : '') + data.next.nw.getHours() + ':' + (data.next.nw.getMinutes() < 10 ? '0' : '') + data.next.nw.getMinutes()
-					|  Uhr
-				li.hw.snd
-					span.icon
-					span.time= (data.next.hw.getHours() < 10 ? '0' : '') + data.next.hw.getHours() + ':' + (data.next.hw.getMinutes() < 10 ? '0' : '') + data.next.hw.getMinutes()
-					|  Uhr
+				- fst = 'hw'
+				- snd = 'nw'
+			- else
+				- fst = 'nw'
+				- snd = 'hw'
+			li.hw.fst
+				span.icon
+				span.time= format_time(data.next[fst].getHours(), data.next[fst].getMinutes())
+				|  Uhr
+			li.nw.snd
+				span.icon
+				span.time= format_time(data.next[snd].getHours(), data.next[snd].getMinutes())
+				|  Uhr
 		#ui
 			#level
 				#bar(class=(data.next.type == 'hw' ? 'bottom' : 'top'))
@@ -40,7 +37,7 @@ block content
 							span#value= (data.next.type == 'hw' ? data.next.bounds.nw : data.next.bounds.hw)
 							|  cm
 						span.time
-							span= (data.date.getHours() < 10 ? '0' : '') + data.date.getHours() + ':' + (data.date.getMinutes() < 10 ? '0' : '') + data.date.getMinutes()
+							span= format_time(data.date.getHours(), data.date.getMinutes())
 							|  Uhr
 			#visual
 				#bullseye
@@ -50,4 +47,5 @@ block content
 						#light
 					#eye
 	footer
+		p Den aktuellen Pegelstand von Hamburg bitte<br />nicht zum Navigieren benutzen! 
 		a(href="/impressum") Impressum

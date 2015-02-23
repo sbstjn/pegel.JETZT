@@ -29,10 +29,14 @@ app.get('/hamburg', function(req, res) {
   Pegel.get(location, function(data) {
     var response = {
       title: "Aktueller Pegelstand der Elbe in " + location.label,
+      location: true,
       name: location.name,
       label: location.label,
       geo: location.geo,
-      data: data
+      data: data,
+      format_time: function(h, m) {
+        return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+      }
     };    
     
     if (data.cached) {
