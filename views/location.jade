@@ -1,0 +1,53 @@
+extends layout
+
+block content
+	#pegel
+		- if (data.next.type == 'hw')
+			h1 Das Wasser steigt in
+		- else
+			h1 Das Wasser sinkt in
+		h2= label
+		h3
+			span
+				span.bg
+				span.lat= geo[0]
+				span.lon= geo[1]
+				span.bg
+		ul#upcoming
+			- if (data.next.type == 'hw')
+				li.hw.fst
+					span.icon
+					span.time= (data.next.hw.getHours() < 10 ? '0' : '') + data.next.hw.getHours() + ':' + (data.next.hw.getMinutes() < 10 ? '0' : '') + data.next.hw.getMinutes()
+					|  Uhr
+				li.nw.snd
+					span.icon
+					span.time= (data.next.nw.getHours() < 10 ? '0' : '') + data.next.nw.getHours() + ':' + (data.next.nw.getMinutes() < 10 ? '0' : '') + data.next.nw.getMinutes()
+					|  Uhr
+			- else 
+				li.nw.fst
+					span.icon
+					span.time= (data.next.nw.getHours() < 10 ? '0' : '') + data.next.nw.getHours() + ':' + (data.next.nw.getMinutes() < 10 ? '0' : '') + data.next.nw.getMinutes()
+					|  Uhr
+				li.hw.snd
+					span.icon
+					span.time= (data.next.hw.getHours() < 10 ? '0' : '') + data.next.hw.getHours() + ':' + (data.next.hw.getMinutes() < 10 ? '0' : '') + data.next.hw.getMinutes()
+					|  Uhr
+		#ui
+			#level
+				#bar(class=(data.next.type == 'hw' ? 'bottom' : 'top'))
+					#bar-box
+						span.meters 
+							span#value= (data.next.type == 'hw' ? data.next.bounds.nw : data.next.bounds.hw)
+							|  cm
+						span.time
+							span= (data.date.getHours() < 10 ? '0' : '') + data.date.getHours() + ':' + (data.date.getMinutes() < 10 ? '0' : '') + data.date.getMinutes()
+							|  Uhr
+			#visual
+				#bullseye
+					#bg
+					#wave(class=(data.next.type == 'hw' ? 'bottom' : 'top') data-max=data.next.bounds.hw, data-min=data.next.bounds.nw, data-cur=data.value)
+						#dark
+						#light
+					#eye
+	footer
+		a(href="/impressum") Impressum

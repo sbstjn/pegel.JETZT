@@ -2,7 +2,7 @@
 	"hamburg": {
 		"key": "hamburg",
 		"name": "Hamburg",
-		"label": "Hamburg, St. Pauli",
+		"label": "Hamburg",
 		"scale": {
 			"min": 100,
 			"max": 900

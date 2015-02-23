@@ -25,25 +25,26 @@ app.use(express.static(__dirname + '/public'));
  * Index - Redirect to default
  */
 app.get('/hamburg', function(req, res) {
-  // res.redirect('/' + config.default);
   var location = mapping['hamburg'];
   Pegel.get(location, function(data) {
     var response = {
-      title: "Aktueller Pegelstand in Hamburg, St. Pauli",
+      title: "Aktueller Pegelstand der Elbe in " + location.label,
       name: location.name,
       label: location.label,
       geo: location.geo,
       data: data
-    };
+    };    
     
     if (data.cached) {
-      log.notice("From Cache: Hamburg, St. Pauli", {source: 'cache', location: 'Hamburg, St.Pauli'});
+      log.notice("From Cache: " + location.label, {source: 'cache', location: location.label});
     } else {
-      log.notice("From Remote: Hamburg, St. Pauli", {source: 'remote', location: 'Hamburg, St.Pauli'});
+      log.notice("From Remote: " + location.label, {source: 'remote', location: location.label});
     }
-    res.render('data', response);
+    
+    res.render('location', response);
   });  
 });
+
 
 app.get('/impressum', function(req, res) {
   res.render('impressum', {title: 'Impressum von pegel.JETZT'});
