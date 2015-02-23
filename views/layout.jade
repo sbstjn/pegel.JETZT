@@ -7,16 +7,17 @@ html
 		script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js")
 		script(src="/script.js")
 		meta(name="viewport", content="width=780")
-		
 		meta(property="og:title" content=title)
-		meta(property="og:site_name" content="pegel.JETZT")
+		meta(property="og:site_name" content="pegel.jetzt")
+		meta(property="og:url" content="http://pegel.jetzt")
+		meta(property="og:type" content="website")
 		- if (location)
-			meta(property="og:description" content="Aktueller Wasserpegel in Hamburg")
-			// meta(property="og:description" content="Aktuell steigt der Wasserpegel in Hamburg! Es ist Flut, den Höchststand hat der Pegel um 19:14 Uhr. Danach gibt es wieder Ebbe und der Tiefstand ist um 04:14 Uhr erreicht. ")
+			- if (data.next.type == 'nw')
+				meta(property="og:description" content="Aktuell fällt der Wasserpegel in Hamburg! Es ist Ebbe, den Tiefststand wird der Pegel um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr haben. Danach gibt es wieder Flut und der Höchststand des Pegels ist um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr erreicht.")
+			- else
+				meta(property="og:description" content="Aktuell steigt der Wasserpegel in Hamburg! Es ist Flut, den Höchststand wird der Pegel um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr haben. Danach gibt es wieder Ebbe und der Tiefststand des Pegels ist um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr erreicht.")
 		- else 
 			meta(property="og:description" content="Der aktuelle Wasserpegel wird präsentiert von S11K.com")
-		meta(property="og:url" content="http://pegel.JETZT")
-		meta(property="og:type" content="website")
 		meta(property="og:image" content="http://pegel.JETZT/image.png")
 		meta(property="fb:admins" content="669118929")
 	body

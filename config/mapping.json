@@ -3,6 +3,7 @@
 		"key": "hamburg",
 		"name": "Hamburg",
 		"label": "Hamburg",
+		"river": "Elbe",
 		"scale": {
 			"min": 100,
 			"max": 900

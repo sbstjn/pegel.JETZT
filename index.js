@@ -18,8 +18,9 @@ var log = logentries.logger({ token:'18bf7167-80db-44b3-868e-f2514f31552f' });
  */
 app.set('view engine', 'jade');
 app.set('port', (process.env.PORT || 5000));
-app.use(lessMiddleware(__dirname + '/public'));
+app.use(lessMiddleware(__dirname + '/public', {compress: false}));
 app.use(express.static(__dirname + '/public'));
+  app.locals.pretty = true;
 
 /**
  * Index - Redirect to default
@@ -33,6 +34,7 @@ app.get('/hamburg', function(req, res) {
       name: location.name,
       label: location.label,
       geo: location.geo,
+      river: location.river,
       data: data,
       format_time: function(h, m) {
         return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
