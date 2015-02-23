@@ -10,6 +10,8 @@ $(document).ready(function() {
 	var min = parseInt(itm.data('min'));
 	var cur = parseInt(itm.data('cur'));
 	
+	cur = 547;
+	
 	max -= min;
 	cur -= min;
 	var pct = (cur/max) * 100;
