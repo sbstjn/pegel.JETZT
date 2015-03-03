@@ -21,11 +21,11 @@ block content
 			- else
 				- fst = 'nw'
 				- snd = 'hw'
-			li.hw.fst
+			li.fst(class=fst)
 				span.icon
 				span.time= format_time(data.next[fst].getHours(), data.next[fst].getMinutes())
 				|  Uhr
-			li.nw.snd
+			li.snd(class=snd)
 				span.icon
 				span.time= format_time(data.next[snd].getHours(), data.next[snd].getMinutes())
 				|  Uhr
