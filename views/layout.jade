@@ -11,6 +11,8 @@ html
 		meta(property="og:site_name" content="pegel.jetzt")
 		meta(property="og:url" content="http://pegel.jetzt")
 		meta(property="og:type" content="website")
+		
+		
 		- if (location)
 			- if (data.next.type == 'nw')
 				meta(property="og:description" content="Aktuell fällt der Wasserpegel in Hamburg! Es ist Ebbe, den Tiefststand wird der Pegel um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr haben. Danach gibt es wieder Flut und der Höchststand des Pegels ist um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr erreicht.")

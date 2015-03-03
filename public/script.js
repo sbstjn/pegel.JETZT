@@ -27,9 +27,9 @@ $(document).ready(function() {
 		$('#value').html(parseInt(now));
 	}});
 	
-	$(document).bind('touchmove', function(e) {
+	/* $(document).bind('touchmove', function(e) {
 		if ($(e.target).id != 'impressum') {
 			e.preventDefault()
 		}
-	});
+	}); */
 });
