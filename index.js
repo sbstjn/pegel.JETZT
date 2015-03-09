@@ -13,6 +13,14 @@ var config = JSON.parse(fs.readFileSync('./config/app.json'));
 var mapping = JSON.parse(fs.readFileSync('./config/mapping.json'));
 
 var log = logentries.logger({ token:'18bf7167-80db-44b3-868e-f2514f31552f' });
+var opbeat = require('opbeat')({
+  organizationId: 'a0e689c14693414a9001d403fe1a23c2',
+  appId: '5178715c70',
+  secretToken: '85af1b548c26415413a2b7606ea359e50f4beb64'
+});
+
+opbeat.captureError(new Error('Ups, something broke'));
+
 /**
  * Configure Express.js
  */
