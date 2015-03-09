@@ -28,7 +28,8 @@ app.set('view engine', 'jade');
 app.set('port', (process.env.PORT || 5000));
 app.use(lessMiddleware(__dirname + '/public', {compress: false}));
 app.use(express.static(__dirname + '/public'));
-  app.locals.pretty = true;
+app.use(opbeat.middleware.express());
+app.locals.pretty = true;
 
 /**
  * Index - Redirect to default
