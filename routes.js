@@ -3,23 +3,19 @@
 	
 	var express = require('express');
 	var Pegelstand = require('./lib/Pegelstand.js');
+	var Error = require('./lib/Error.js');
 
 	var route = express();
 	var app = new Pegelstand();
-	
-	route.get('/404', function(req, res) {
-		res.statusCode = 404;
-		res.send('Not Found');
-	});
 	
 	route.get('/impressum', function(req, res) {
 		res.render('impressum', {title: 'About pegel.JETZT'});
 	});
 	
-	route.get('/:location', function(req, res) {
+	route.get('/:location', function(req, res, next) {
 		app.get(req.params.location, function(err, data) {
 			if (err) {
-				res.redirect('/404');
+				throw new Error('Unknown Location', 404, {location: req.params.location});
 			} else {
 				data.location = true;
 				/* jshint camelcase: false */

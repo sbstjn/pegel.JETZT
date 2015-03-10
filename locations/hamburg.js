@@ -1,6 +1,8 @@
 (function() {
 	'use strict';
 	
+	var Error = require(__dirname + '/../lib/Error.js');
+	
 	// Load Crawler
 	var Crawler = require('crawler');
 	

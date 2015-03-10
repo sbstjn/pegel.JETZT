@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "crawler": "^0.4.1",
+    "debug": "^2.1.2",
     "express": "~4.9.x",
     "jade": "^1.9.2",
     "less-middleware": "^1.0.4",
-    "opbeat": "^1.2.0",
-    "debug": "^2.1.2",
-    "morgan": "^1.5.1"
+    "morgan": "^1.5.1",
+    "opbeat": "^1.2.0"
   },
   "devDependencies": {
     "chance": "^0.7.3",
