@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var app = require('../app');
+app.listen(process.env.PORT || 8080, function() {
+	var host = app.address().address
+	var port = app.address().port
+
+	console.log('Example app listening at http://%s:%s', host, port);
+});
