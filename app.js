@@ -5,11 +5,6 @@
   var lessMiddleware = require('less-middleware');
   var Error = require('./lib/Error.js');
   var app = express();
-  var opbeat = require('opbeat')({
-    appId: '5178715c70',
-    organizationId: 'a0e689c14693414a9001d403fe1a23c2',
-    secretToken: '85af1b548c26415413a2b7606ea359e50f4beb64'
-  });
   
   // view engine setup
   app.set('views', path.join(__dirname, 'views'));
@@ -35,12 +30,6 @@
   
   // Catch errors
   app.use(function(err, req, res, next) {
-    // Send Error to OpBeat
-    opbeat.captureError(err.message, {
-      extra: {location: err.data.location}, 
-      request: req});
-    
-    // Redirect to error page
     res.redirect('/' + err.code ? err.code : 500);
   });
   
