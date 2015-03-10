@@ -26,10 +26,4 @@ $(document).ready(function() {
 	$({pegel: $('#value').text()}).animate({pegel: itm.data('cur')}, {duration: dur, step: function(now) {
 		$('#value').html(parseInt(now));
 	}});
-	
-	/* $(document).bind('touchmove', function(e) {
-		if ($(e.target).id != 'impressum') {
-			e.preventDefault()
-		}
-	}); */
 });
