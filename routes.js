@@ -12,7 +12,7 @@
 		res.render('impressum', {title: 'About pegel.JETZT'});
 	});
 	
-	route.get('/:location', function(req, res, next) {
+	route.get('/:location', function(req, res) {
 		app.get(req.params.location, function(err, data) {
 			if (err) {
 				throw new Error('Unknown Location', 404, {location: req.params.location});

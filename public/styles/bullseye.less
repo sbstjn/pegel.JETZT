@@ -314,15 +314,26 @@ footer {
 }
 
 #impressum {
-	width: 600px;
-	margin: 0 auto;
+	margin: 40px;
+	text-align: left;
+	overflow: hidden;
 	
 	h1 {
 		font-size: 22px;
 		font-weight: 300;
+		margin-bottom: 12px;
+	}
+	
+	span {
+		font-weight: bold;
+		color: RGB(143, 137, 123);
+		padding-bottom: 0px;
+		display: block;
 	}
 	
 	p {
+		font-size: 14px;
+		line-height: 17px;
 		color: RGB(143, 137, 123);
 	}
 	
@@ -334,7 +345,19 @@ footer {
 	
 	ul {
 		list-style-type: none;
-		margin: 10px 0;
-		line-height: 20px;
+		margin: 20px 0 20px 0;
+		line-height: 17px;
+		font-size: 14px;
+		
+		a {
+			font-weight: bold;
+		}
+		
+		.contact {
+			padding-top: 10px;
+			a {
+				font-weight: 500;
+			}
+		}
 	}
 }
