@@ -20,9 +20,9 @@ html
 		
 		- if (location)
 			- if (data.next.type == 'nw')
-				meta(property="og:description" content="Aktuell fällt die Tide in " + label + "! Es ist Ebbe, den Tiefststand wird der Pegel um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr haben und der Höchststand des Pegels ist um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr erreicht.")
+				meta(property="og:description" content="Aktuell fällt die Tide in " + label + "! Den Tiefststand wird der Pegel um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr erreichen, den nächsten Höchststand wird er um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr haben.")
 			- else
-				meta(property="og:description" content="Aktuell steigt die Tide in " + label + "! Es ist Flut, den Höchststand wird der Pegel um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr haben und der Tiefststand des Pegels ist um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr erreicht.")
+				meta(property="og:description" content="Aktuell steigt die Tide in " + label + "! Den Höchststand wird der Pegel um " + format_time(data.next.hw.getHours(), data.next.hw.getMinutes()) + " Uhr erreichen, den nächsten Tiefststand wird er um " + format_time(data.next.nw.getHours(), data.next.nw.getMinutes()) + " Uhr haben.")
 		- else 
 			meta(property="og:description" content="Der aktuelle Wasserpegel wird präsentiert von S11K.com")
 		meta(property="og:image" content="http://pegel.JETZT/image.png")
