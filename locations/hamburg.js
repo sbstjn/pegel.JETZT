@@ -41,10 +41,10 @@
 	
 	// Define custom location
 	var Location = function() {
-		this.label 	= 'Hamburg';
+		this.label 	= 'Hamburg, St. Pauli';
 		this.geo 		= ['53°32\'44"', '9°58\'12"'];
 		this.river 	= 'Elbe';
-		this.title 	= 'Aktueller Pegelstand der Elbe in Hamburg, St. Pauli';
+		this.title 	= 'Pegelstand der ' + this.river + ' in ' + this.label;
 		this.name 		= 'Hamburg';
 		this.sites 	= {
 			'current': 'http://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=5952050',
